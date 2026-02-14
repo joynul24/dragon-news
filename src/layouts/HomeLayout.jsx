@@ -1,5 +1,6 @@
 import LatestNewsMarquee from "../components/LatestNewsMarquee";
 import Header from "../components/shared/Header";
+import Navber from "../components/shared/Navber";
 
 export default function HomeLayout() {
   return (
@@ -8,7 +9,7 @@ export default function HomeLayout() {
         <Header></Header>
         <LatestNewsMarquee></LatestNewsMarquee>
       </header>
-      <nav></nav>
+      <nav><Navber></Navber></nav>
       <main></main>
     </div>
   )
