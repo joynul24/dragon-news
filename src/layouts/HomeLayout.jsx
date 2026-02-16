@@ -4,10 +4,11 @@ import CategoryBtns from "../components/CategoryBtns";
 import LatestNewsMarquee from "../components/LatestNewsMarquee";
 import Header from "../components/shared/Header";
 import Navber from "../components/shared/Navber";
+import LatestNews from "../components/LatestNews";
 
 export default function HomeLayout() {
   return (
-    <div className="container mx-auto font-poppins px-2">
+    <div className="container mx-auto font-poppins px-2 md:px-4">
       <header>
         <Header></Header>
         <LatestNewsMarquee></LatestNewsMarquee>
@@ -17,6 +18,7 @@ export default function HomeLayout() {
         {/* News Category */}
         <aside className="md:col-span-3">
           <CategoryBtns></CategoryBtns>
+          <LatestNews></LatestNews>
         </aside>
         {/* All News */}
         <section className="md:col-span-6">
