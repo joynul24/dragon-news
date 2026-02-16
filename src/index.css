@@ -10,3 +10,7 @@
 .active{
      background-color: #d1d1d1;
 }
+
+body{
+     overflow-y: scroll;
+}
