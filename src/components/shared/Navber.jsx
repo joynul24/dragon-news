@@ -1,11 +1,11 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import navProfile from "../../assets/user.png"
 
 export default function Navber() {
     const links = (<>
      <li><NavLink to={'/'}>Home</NavLink></li>
-     <li><NavLink to={'/'}>About</NavLink></li>
-     <li><NavLink to={'/'}>Career</NavLink></li>
+     <li><NavLink to={'/about'}>About</NavLink></li>
+     <li><NavLink to={'/career'}>Career</NavLink></li>
     </>)
   return (
 <div className="navbar py-5 px-4 bg-base-100">
@@ -42,7 +42,7 @@ export default function Navber() {
   {/* Navbar End */}
   <div className="navbar-end flex items-center gap-2.5">
     <img className="w-10 h-10 rounded-full object-cover" src={navProfile} alt="userProfile" />
-    <button className="btn bg-gray-700 text-white font-medium border-0">Login</button>
+    <Link to={"/auth/login"} className="btn bg-gray-700 text-white font-medium border-0">Login</Link>
   </div>
 </div>
 
