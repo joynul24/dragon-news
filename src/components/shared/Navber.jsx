@@ -1,7 +1,23 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import navProfile from "../../assets/user.png"
+import { useContext } from "react";
+import { AuthContext } from "../../provider/AuthProvider";
+import { toast } from "react-toastify";
 
 export default function Navber() {
+  const {user, logOut} = useContext(AuthContext);
+  const navigate = useNavigate()
+
+  const handleLogout = () => {
+     logOut() 
+     .then(() => { 
+      toast.success("User logged out successfully"); 
+      navigate("/auth/login");
+    }) 
+     .catch((error) => { 
+      toast.error(`❌ ${error.message}`); 
+    }); };
+
     const links = (<>
      <li><NavLink to={'/'}>Home</NavLink></li>
      <li><NavLink to={'/about'}>About</NavLink></li>
@@ -25,7 +41,7 @@ export default function Navber() {
       </div>
       <ul
         tabIndex={0}
-        className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+        className="menu menu-sm dropdown-content mt-3 z-10 p-2 shadow bg-base-100 rounded-box w-52"
       >
         {links}
       </ul>
@@ -41,8 +57,21 @@ export default function Navber() {
 
   {/* Navbar End */}
   <div className="navbar-end flex items-center gap-2.5">
-    <img className="w-10 h-10 rounded-full object-cover" src={navProfile} alt="userProfile" />
-    <Link to={"/auth/login"} className="btn bg-gray-700 text-white font-medium border-0">Login</Link>
+    {/* <img className="w-10 h-10 rounded-full object-cover" src={navProfile} alt="userProfile" /> */}
+    {
+       user? (
+      <> 
+      <img className="w-10 h-10 rounded-full object-cover" src={user?.photoURL || navProfile} alt="userProfile" /> 
+      <button onClick={handleLogout} className="btn bg-red-400 text-white font-medium border-0" > Logout </button> </>
+      )
+       : 
+      (  
+      <>
+      <img className="w-10 h-10 rounded-full object-cover" src={navProfile} alt="userProfile" /> 
+      <Link to={"/auth/login"} className="btn bg-gray-700 text-white font-medium border-0">Login</Link>
+      </>
+      )
+    }
   </div>
 </div>
 
